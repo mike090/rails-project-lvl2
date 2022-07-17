@@ -1,0 +1,23 @@
+/ required variables: comment, comment_template
+
+.card.mt-4.mb-3 id=dom_id(comment)
+  .card-body
+    .card-text.mb-2
+      span.me-2.fw-bold = comment.creator.email
+      span = distance_of_time_in_words_to_now comment.created_at
+    hr
+    .card-text.mb-2 = comment.content
+    hr
+    .card-text
+      = link_to t('.answer'), "#new_#{dom_id comment}", class: 'd-block small collapsed text-muted', 'data-bs-toggle' => 'collapse', 'aria-expanded' => false
+
+      .collapse.mt-2 id="new_#{dom_id(comment)}" data-bs-target="#new_#{dom_id(comment)}"
+        - if current_user
+          = render 'comment_form', comment: comment_template, url: create_comment_path(comment.post, comment)
+        - else
+          .d-flex
+            span = t('.requires')
+            = link_to t('.sign_in'), new_user_session_path, class: 'mx-1'
+    .ms-4.me-2
+      - comment.children.by_earliest_created.each do |comment|
+        = render 'comment', comment: comment, comment_template: @comment_template

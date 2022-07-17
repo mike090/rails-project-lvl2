@@ -1,0 +1,11 @@
+ru:
+  layouts:
+    application:
+      title: Коллективный блог
+    shared:
+      nav:
+        hexlet_logo: Hexlet logo
+        add_post: Добавить статью
+        sign_in:  Войти
+        sign_out: Выйти
+        register: Регистрация

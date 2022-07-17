@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: first post
+  body: first post body
+  category: :two
+  creator: :one
+
+two:
+  title: second post
+  body: second post body
+  category: :one
+  creator: :two

@@ -1,0 +1,24 @@
+h1 = t('.title')
+.row
+  - @posts.each do |post|
+    .col-md-12
+      .card.mb-3 id=dom_id(post)
+        .card-body
+          .card-text
+            span.me-2.fw-bold = post.creator.email
+            span = distance_of_time_in_words_to_now post.created_at
+            hr
+          h2.h5.card-title
+            = post.title
+          .card-text.mb-2 = post.body
+          .text-right.mt-auto
+            hr
+            .mx-2
+              span.me-2
+                i.fa-regular.fa-comments
+              span.me-4
+                = post.comments.count
+              span.me-2
+                i.fa-regular.fa-thumbs-up
+              span.me-4 = post.likes.count
+              = link_to t('.read_more'), post, class: 'link-dark'

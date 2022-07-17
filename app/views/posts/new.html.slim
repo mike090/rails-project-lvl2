@@ -1,0 +1,12 @@
+h1.h2.mb-4 = t('.title')
+
+= simple_form_for @post do |f|
+  .form_inputs
+    .mb-3
+      = f.input :title
+    .mb-3
+      = f.input :body, as: :text
+    .mb-3
+      = f.association :category
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'

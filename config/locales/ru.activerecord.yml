@@ -1,0 +1,18 @@
+---
+ru:
+  activerecord:
+    models:
+      post_comment: Комментарий
+    attributes:
+      user:
+        email: Email
+        name: Имя
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        remember_me: Запомнить меня
+      post:
+        title: Заголовок
+        body: Содержание
+        category: Категория
+      category:
+        name: Категория

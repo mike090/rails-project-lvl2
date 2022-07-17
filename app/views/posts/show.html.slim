@@ -1,0 +1,26 @@
+article.col-12
+  header.mb-4
+    h1.fw-bolder.mb-1 = @post.title
+    .d-flex.justify-content-between
+      #post-section
+        .text-muted.fst-italic
+          = t('.posted_info', pulished_date: @post.published_date_long, author: @post.creator.email)
+      #likes-section
+        span
+          - if @post.liked_by? current_user
+            = link_to post_like_path(@post), method: :delete, class: 'link-dark' do
+              i.fa-solid.fa-thumbs-up
+          - else
+            = link_to post_like_path(@post), method: :post, class: 'link-dark' do
+              i.fa-regular.fa-thumbs-up
+
+    = link_to @post.category.name, '#', class: 'badge bg-secondary text-decoration-none link-light'
+
+  section.mb-5
+    p.fs-5.mb-2 = @post.body
+.lead.mb-3 = t('.comments')
+= render 'comment_form', comment: @comment_template, url: create_comment_path(@post) if current_user
+
+section.mb-5
+  - @post_comments.each do |comment|
+    = render 'comment', comment: comment, comment_template: @comment_template

@@ -1,0 +1,17 @@
+---
+ru:
+  posts:
+    index:
+      title: Коллективный блог
+      likes_count: 'Понравилось: %{likes_count}'
+      read_more: Подробнее...
+    new:
+      title: Новая статья
+    show:
+      comments: Комментарии
+      answer: Ответить
+      posted_info: 'Опубликовано %{pulished_date}, автор: %{author}'
+    comment:
+      answer: Ответить
+      requires: Необходимо
+      sign_in: Войти
