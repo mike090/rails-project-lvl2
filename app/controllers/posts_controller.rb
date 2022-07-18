@@ -22,10 +22,10 @@ class PostsController < ApplicationController
 
   def show
     set_post!
+    set_like # only for hexlet check
     set_comment_template
     set_post_comments
     @post = @post.decorate
-    # @liked_by_current_user = PostLike.user_like_post(current_user, @post).first
   end
 
   private
@@ -44,5 +44,10 @@ class PostsController < ApplicationController
 
   def set_post_comments
     @post_comments = PostComment.on_the_post(@post).by_earliest_created
+  end
+
+  # only for hexlet check
+  def set_like
+    @like = PostLike.user_like_post(current_user, @post)
   end
 end

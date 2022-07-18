@@ -8,10 +8,10 @@ article.col-12
       #likes-section
         span
           - if @post.liked_by? current_user
-            = link_to post_like_path(@post), method: :delete, class: 'link-dark' do
+            = link_to post_like_path(@post, @like), method: :delete, class: 'link-dark' do
               i.fa-solid.fa-thumbs-up
           - else
-            = link_to post_like_path(@post), method: :post, class: 'link-dark' do
+            = link_to post_likes_path(@post), method: :post, class: 'link-dark' do
               i.fa-regular.fa-thumbs-up
 
     = link_to @post.category.name, '#', class: 'badge bg-secondary text-decoration-none link-light'
