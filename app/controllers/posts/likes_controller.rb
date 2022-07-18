@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LikesController < ApplicationController
+class Posts::LikesController < ApplicationController
   def create
     authenticate_user!
     set_post!
