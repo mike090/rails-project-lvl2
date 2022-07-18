@@ -10,6 +10,7 @@ ru:
     show:
       comments: Комментарии
       answer: Ответить
+      to_posts_list: К списку постов
       posted_info: 'Опубликовано %{pulished_date}, автор: %{author}'
     comment:
       answer: Ответить

@@ -18,7 +18,12 @@ article.col-12
 
   section.mb-5
     p.fs-5.mb-2 = @post.body
-.lead.mb-3 = t('.comments')
+= link_to posts_path(anchor: dom_id(@post)), class: 'btn btn-secondary' do
+  span.me-2
+    i.fa-solid.fa-backward
+  = t('.to_posts_list')
+hr
+.lead.my-3 = t('.comments')
 = render 'comment_form', comment: @comment_template, url: create_comment_path(@post) if current_user
 
 section.mb-5
