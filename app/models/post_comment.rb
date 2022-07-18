@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class PostComment < ApplicationRecord
-  include Creatorable
-
+  belongs_to :user
   belongs_to :post
   has_ancestry
 

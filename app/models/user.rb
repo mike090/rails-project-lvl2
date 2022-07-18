@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable # , :validatable
 
   has_many :posts, foreign_key: 'creator_id', dependent: :destroy, inverse_of: :creator
-  has_many :comments, foreign_key: 'creator_id', dependent: :destroy, inverse_of: :creator
+  has_many :comments, foreign_key: 'creator_id', dependent: :destroy, inverse_of: :user
   has_many :likes, dependent: :destroy, inverse_of: :user
 
   validates :email, presence: true

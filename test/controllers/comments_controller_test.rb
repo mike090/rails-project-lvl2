@@ -17,7 +17,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.on_the_post(post).find_by(creator: user, content: comment_content)
+    comment = PostComment.on_the_post(post).find_by(user: user, content: comment_content)
     assert comment
     assert_redirected_to post_path(post, anchor: dom_id(comment))
   end
@@ -32,7 +32,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.children_of(commented).find_by(creator: user, content: comment_content, post: commented.post)
+    comment = PostComment.children_of(commented).find_by(user: user, content: comment_content, post: commented.post)
     assert comment
     assert_redirected_to post_path(commented.post, anchor: dom_id(comment))
   end
@@ -47,7 +47,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.on_the_post(post).find_by(creator: user, content: comment_content)
+    comment = PostComment.on_the_post(post).find_by(user: user, content: comment_content)
     assert_not comment
     assert_redirected_to post_path(post)
   end
@@ -62,7 +62,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.children_of(commented).find_by(creator: user, content: comment_content, post: commented.post)
+    comment = PostComment.children_of(commented).find_by(user: user, content: comment_content, post: commented.post)
     assert_not comment
     assert_redirected_to post_path(commented.post, anchor: dom_id(commented))
   end

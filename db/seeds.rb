@@ -43,7 +43,7 @@ unless PostComment.any?
   posts.each do |post|
     [*1..5].sample.times do
       post.comments.create! content: Faker::Lorem.paragraph(sentence_count: [*1..5].sample),
-                            creator: users.sample
+                            user: users.sample
       cntr += 1
     end
   end
@@ -57,7 +57,7 @@ unless PostComment.where.not(ancestry: :nil).any?
     sample_comments = PostComment.all.sample(PostComment.count / 3)
     cntr = 0
     sample_comments.each do |comment|
-      comment.children.create post: comment.post, creator: users.sample, content: Faker::Lorem.paragraph(sentence_count: [*1..5].sample)
+      comment.children.create post: comment.post, user: users.sample, content: Faker::Lorem.paragraph(sentence_count: [*1..5].sample)
       cntr += 1
     end
   end

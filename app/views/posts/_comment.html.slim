@@ -3,7 +3,7 @@
 .card.mt-4.mb-3 id=dom_id(comment)
   .card-body
     .card-text.mb-2
-      span.me-2.fw-bold = comment.creator.email
+      span.me-2.fw-bold = comment.user.email
       span = distance_of_time_in_words_to_now comment.created_at
     hr
     .card-text.mb-2 = comment.content

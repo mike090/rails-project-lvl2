@@ -8,7 +8,7 @@ module Posts
       set_parent_comment
 
       @new_comment = @post.comments.build(comment_params)
-      @new_comment.creator = current_user
+      @new_comment.user = current_user
       @new_comment.parent = @parent_comment
 
       if @new_comment.save

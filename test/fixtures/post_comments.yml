@@ -3,9 +3,9 @@
 one:
   content: MyText
   post: one
-  creator: one
+  user: one
 
 two:
   content: MyText
   post: two
-  creator: two
+  user: two
