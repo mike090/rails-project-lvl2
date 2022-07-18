@@ -1,5 +1,5 @@
-h2 Вход
-= simple_form_for(resource, as: resource_name, url: new_session_path(:user)) do |f|
+h2 = t('.sign_in')
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
     .mb-3
       = f.input :email, autofocus: true, input_html: { autocomplete: 'email' }
@@ -8,8 +8,6 @@ h2 Вход
     .mb-3
       = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
   .form-actions.mb-3
-      = f.submit 'Вход', class: 'btn btn-primary'
+      = f.submit t('.sign_in'), class: 'btn btn-primary'
 
-= link_to 'Регистрация', new_user_registration_path
-br
-= link_to 'Забыли пароль?', new_user_password_path
+= render 'devise/shared/links'

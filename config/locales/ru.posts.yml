@@ -16,3 +16,8 @@ ru:
       answer: Ответить
       requires: Необходимо
       sign_in: Войти
+    create:
+      success: Статья успешно добавлена
+    comments:
+      create:
+        success: Комментарий успешно добавлен

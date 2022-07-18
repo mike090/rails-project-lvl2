@@ -1,4 +1,5 @@
 = simple_form_for comment, url: url, id: dom_id(comment) do |f|
-  / = f.input :parent_id, :as => :hidden, :input_html => { :value => "#{parent_id}" } if parent_id
-  = f.input :content, as: :text, label: false
-  = f.submit class: 'btn btn-primary mb-4 mt-1'
+  .form-controls
+    = f.input :content, as: :text, label: false
+  .form-actions
+    = f.submit class: 'btn btn-primary mb-4 mt-1'

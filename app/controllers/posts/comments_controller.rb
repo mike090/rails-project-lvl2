@@ -15,7 +15,8 @@ module Posts
         redirect_to focus_comment_path(@new_comment), notice: t('.success')
       else
         destination = @parent_comment ? focus_comment_path(@parent_comment) : post_path(@post)
-        redirect_to destination, notice: @new_comment.errors.full_messages.join(' ')
+        flash['warning'] = @new_comment.errors.full_messages.join(' ')
+        redirect_to destination
       end
     end
 

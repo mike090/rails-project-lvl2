@@ -16,3 +16,5 @@ ru:
         category: Категория
       category:
         name: Категория
+      post_comment:
+        content: Комментарий
