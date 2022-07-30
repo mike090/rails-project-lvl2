@@ -15,7 +15,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     assert post.liked_by?(user)
   end
 
-  test 'duble like not raises' do
+  test 'double like not raises' do
     post = posts(:one).decorate
     user = users :one
     sign_in user
@@ -25,20 +25,19 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     assert post.liked_by?(user)
   end
 
-  test 'duble unlike not raises' do
+  test 'double unlike not raises' do
     post = posts(:two).decorate
     user = users :one
     sign_in user
     assert post.liked_by?(user)
-    post post_likes_path(post)
-    assert_nothing_raised { post post_likes_path(post) }
-    assert post.liked_by?(user)
+    delete post_like_path(post, 0)
+    assert_nothing_raised { delete post_like_path(post, 0) }
+    assert_not post.liked_by?(user)
   end
 
   test 'not authented user redirected when like' do
     post = posts(:one).decorate
     user = users :one
-    sign_out users(:one)
     assert_not post.liked_by?(user)
     post post_likes_path(post)
     assert_redirected_to new_user_session_path

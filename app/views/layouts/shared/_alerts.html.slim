@@ -1,5 +1,8 @@
 - if flash.any?
-  .container.my-2
+  .container.my-2 {
+  height: 200px;
+  overflow-y: scroll;
+}
     - flash.each do |message_type, msg|
       div class = "alert alert-#{message_type}"
         = msg

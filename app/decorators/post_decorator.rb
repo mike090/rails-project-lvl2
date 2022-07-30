@@ -12,6 +12,6 @@ class PostDecorator < ApplicationDecorator
   end
 
   def liked_by?(user)
-    PostLike.user_like_post(user, self).any?
+    PostLike.by_user_and_post(user, self).any?
   end
 end

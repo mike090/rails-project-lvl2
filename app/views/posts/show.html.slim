@@ -25,7 +25,7 @@ article.col-12
   = t('.to_posts_list')
 hr
 .lead.my-3 = t('.comments')
-= render 'comment_form', comment: @comment_template, url: create_comment_path(@post) if current_user
+= render 'comment_form', comment: @comment_template, url: post_comments_path(@post) if current_user
 
 section.mb-5
   - @post_comments.each do |comment|

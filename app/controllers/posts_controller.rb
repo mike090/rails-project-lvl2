@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.by_recently_created
+    @posts = Post.by_recently_created.includes :creator
   end
 
   def new
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     authenticate_user!
     @post = current_user.posts.new post_params
     if @post.save
-      redirect_to root_path, notice: t('.success')
+      redirect_to root_path, success: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,11 +43,11 @@ class PostsController < ApplicationController
   end
 
   def set_post_comments
-    @post_comments = PostComment.on_the_post(@post).by_earliest_created
+    @post_comments = PostComment.roots_for_post(@post).by_earliest_created.includes :user
   end
 
   # only for hexlet check
   def set_like
-    @like = PostLike.user_like_post(current_user, @post)
+    @like = PostLike.by_user_and_post(current_user, @post)
   end
 end
