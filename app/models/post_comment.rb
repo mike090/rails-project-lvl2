@@ -7,7 +7,5 @@ class PostComment < ApplicationRecord
 
   validates :content, presence: true, length: { minimum: 5 }
 
-  scope :roots_for_post, ->(post) { roots.where(post_id: post.id) }
-  # scope :by_recently_created, -> { order(id: :desc) }
   scope :by_earliest_created, -> { order(id: :asc) }
 end

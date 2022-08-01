@@ -17,8 +17,8 @@ h1 = t('.title')
               span.me-2
                 i.fa-regular.fa-comments
               span.me-4
-                = post.comments.count
+                = post.count_of_comments
               span.me-2
                 i.fa-regular.fa-thumbs-up
-              span.me-4 = post.likes.count
+              span.me-4 = post.count_of_likes
               = link_to t('.read_more'), post, class: 'link-dark'

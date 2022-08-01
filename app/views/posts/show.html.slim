@@ -6,7 +6,7 @@ article.col-12
         .text-muted.fst-italic
           = t('.posted_info', pulished_date: @post.published_date_long, author: @post.creator.email)
       #likes-section
-        span.me-2 = @post.likes.count
+        span.me-2 = @post.count_of_likes
         span
           - if @post.liked_by? current_user
             = link_to post_like_path(@post, @like), method: :delete, class: 'link-dark' do
@@ -28,5 +28,5 @@ hr
 = render 'comment_form', comment: @comment_template, url: post_comments_path(@post) if current_user
 
 section.mb-5
-  - @post_comments.each do |comment|
-    = render 'comment', comment: comment, comment_template: @comment_template
+  - @comments.each do |comment, subtree|
+    = render 'comment', comment: comment, subtree: subtree, comment_template: @comment_template

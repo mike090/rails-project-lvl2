@@ -12,7 +12,7 @@ class Posts::LikesController < ApplicationController
   def destroy
     authenticate_user!
     set_post!
-    PostLike.by_user_and_post(current_user, @post).delete_all
+    PostLike.by_user_and_post(current_user, @post).destroy_all
     redirect_to @post
   end
 

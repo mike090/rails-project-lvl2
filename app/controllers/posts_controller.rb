@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def set_post_comments
-    @post_comments = PostComment.roots_for_post(@post).by_earliest_created.includes :user
+    @comments = PostComment.includes(:user).arrange post: @post, order: :created_at
   end
 
   # only for hexlet check

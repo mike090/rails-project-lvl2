@@ -1,4 +1,4 @@
-/ required variables: comment, comment_template
+/ required variables: comment, subtree, comment_template
 
 .card.mt-4.mb-3 id=dom_id(comment)
   .card-body
@@ -19,5 +19,5 @@
             span = t('.requires')
             = link_to t('.sign_in'), new_user_session_path, class: 'mx-1'
     .ms-4.me-2
-      - comment.children.by_earliest_created.each do |comment|
-        = render 'comment', comment: comment, comment_template: @comment_template
+      - subtree.each do |comment, subtree|
+        = render 'comment', comment: comment, subtree: subtree, comment_template: @comment_template

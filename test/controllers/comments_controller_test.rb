@@ -17,7 +17,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.roots_for_post(post).find_by(user: user, content: comment_content)
+    comment = PostComment.roots.where(post_id: post.id).find_by(user: user, content: comment_content)
     assert comment
     assert_redirected_to post_path(post, anchor: dom_id(comment))
   end
@@ -47,23 +47,8 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.roots_for_post(post).find_by(user: user, content: comment_content)
+    comment = PostComment.roots.where(post_id: post.id).find_by(user: user, content: comment_content)
     assert_not comment
     assert_redirected_to post_path(post)
-  end
-
-  test 'add invalid comment to comment' do
-    user = users(:two)
-    commented = post_comments(:one)
-    comment_content = '  '
-    sign_in user
-    post post_comments_path(commented.post, comment_id: commented.id), params: {
-      post_comment: {
-        content: comment_content
-      }
-    }
-    comment = PostComment.children_of(commented).find_by(user: user, content: comment_content, post: commented.post)
-    assert_not comment
-    assert_redirected_to post_path(commented.post)
   end
 end
