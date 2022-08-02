@@ -6,6 +6,4 @@ class PostComment < ApplicationRecord
   has_ancestry
 
   validates :content, presence: true, length: { minimum: 5 }
-
-  scope :by_earliest_created, -> { order(id: :asc) }
 end

@@ -1,8 +1,9 @@
 - if flash.any?
-  .container.my-2 {
-  height: 200px;
-  overflow-y: scroll;
-}
+  .container.my-2
     - flash.each do |message_type, msg|
-      div class = "alert alert-#{message_type}"
-        = msg
+      - if message_type.to_s == 'alert'
+        .alert.alert-danger
+          = msg
+      - else
+        div class = "alert alert-#{message_type}"
+          = msg
