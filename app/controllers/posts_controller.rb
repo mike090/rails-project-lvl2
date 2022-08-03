@@ -21,10 +21,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    set_post!
+    @post = Post.find params[:id]
     set_like # only for hexlet check
-    set_comment_template
-    set_post_comments
+    @new_comment = @post.comments.build
+    @comments = comments_tree
     @post = @post.decorate
   end
 
@@ -34,16 +34,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :category_id)
   end
 
-  def set_post!
-    @post = Post.find params[:id]
-  end
-
-  def set_comment_template
-    @comment_template = @post.comments.build
-  end
-
-  def set_post_comments
-    @comments = PostComment.includes(:user).arrange post: @post, order: :created_at
+  def comments_tree
+    PostComment.includes(:user).arrange post: @post, order: :created_at
   end
 
   # only for hexlet check

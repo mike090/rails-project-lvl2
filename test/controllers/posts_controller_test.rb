@@ -15,7 +15,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'shold create post' do
+  test 'should create post' do
     sign_in users(:one)
     title = Faker::Lorem.sentence
     post posts_url params: {
@@ -30,7 +30,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil Post.find_by(title: title)
   end
 
-  test 'shoгld get new' do
+  test 'should get new' do
     sign_in users(:one)
     get new_post_url
     assert_response :success

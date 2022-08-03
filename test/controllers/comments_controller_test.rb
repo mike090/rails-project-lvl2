@@ -17,7 +17,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.roots.where(post_id: post.id).find_by(user: user, content: comment_content)
+    comment = post.comments.roots.find_by(post_id: post.id, user: user, content: comment_content)
     assert comment
     assert_redirected_to post_path(post, anchor: dom_id(comment))
   end
@@ -47,7 +47,7 @@ class CommentControllerTest < ActionDispatch::IntegrationTest
         content: comment_content
       }
     }
-    comment = PostComment.roots.where(post_id: post.id).find_by(user: user, content: comment_content)
+    comment = post.comments.roots.find_by(post_id: post.id, user: user, content: comment_content)
     assert_not comment
     assert_redirected_to post_path(post)
   end

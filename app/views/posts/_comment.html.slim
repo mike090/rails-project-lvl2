@@ -1,4 +1,4 @@
-/ required variables: comment, subtree, comment_template
+/ required variables: comment, subtree, new_comment
 
 .card.mt-4.mb-3 id=dom_id(comment)
   .card-body
@@ -13,11 +13,11 @@
 
       .collapse.mt-2 id="new_#{dom_id(comment)}" data-bs-target="#new_#{dom_id(comment)}"
         - if current_user
-          = render 'comment_form', comment: comment_template, url: post_comments_path(comment.post, comment_id: comment.id)
+          = render 'comment_form', comment: new_comment, url: post_comments_path(comment.post, comment_id: comment.id)
         - else
           .d-flex
             span = t('.requires')
             = link_to t('.sign_in'), new_user_session_path, class: 'mx-1'
     .ms-4.me-2
       - subtree.each do |comment, subtree|
-        = render 'comment', comment: comment, subtree: subtree, comment_template: @comment_template
+        = render 'comment', comment: comment, subtree: subtree, new_comment: @new_comment
