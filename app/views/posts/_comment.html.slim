@@ -20,4 +20,4 @@
             = link_to t('.sign_in'), new_user_session_path, class: 'mx-1'
     .ms-4.me-2
       - subtree.each do |comment, subtree|
-        = render 'comment', comment: comment, subtree: subtree, new_comment: @new_comment
+        = render 'comment', comment: comment, subtree: subtree, new_comment: new_comment
