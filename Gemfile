@@ -42,8 +42,6 @@ gem 'rails-i18n'
 
 gem 'ancestry'
 
-gem 'faker'
-
 gem 'draper', '~> 4.0.2'
 
 group :development, :test do
@@ -51,6 +49,8 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  gem 'faker'
 end
 
 group :development do
